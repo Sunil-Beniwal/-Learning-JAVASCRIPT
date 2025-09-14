@@ -2,12 +2,11 @@
 
 // alert( 3 + 3) // we are using nodejs, not browser. alert() is a browser-only function (part of the Web APIs). in node.js environment you will get ReferenceError: alert is not defined
 
-let name = "Sunil"
-let age = 24
-let isLoggedIn = false
-let state;
 
 /*******************************different datatypes listed below********************/
+//****************** Primitive******
+//  7 types : String, Number, Boolearn, null, undefined, Symbol, BigInt
+
 // number => 2 to power 53
 // bigint
 // string => ""
@@ -15,18 +14,44 @@ let state;
 // null => standalone value
 // undefined => If a variable is declared, but not assigned, then its value is undefined
 // symbol => unique. The symbol type is used to create unique identifiers for objects.
-// object => Above all were primitive datatypes but object is non primitive datatype.
 
-console.log(typeof name);
-console.log(typeof age);
-console.log(typeof isLoggedIn);
-console.log(typeof state);
-console.log(typeof 18n);
-console.log(typeof undefined); // undefined
-console.log(typeof null); // object
+let name = "Sunil"
+let age = 24
+let isLoggedIn = false
+const outsideTemp = null
+let state;
 
+const id = Symbol('123')
+const anotherId = Symbol('123')
+// console.log(id === anotherId);
 
-/***************Note Point 1****************************/
+// console.log(typeof name);
+// console.log(typeof age);
+// console.log(typeof isLoggedIn);
+// console.log(typeof state);
+// console.log(typeof outsideTemp);
+// console.log(typeof id);
+// console.log(typeof 18n);
+// console.log(typeof undefined); // undefined
+// console.log(typeof null); // object
+
+// *****************Reference (Non primitive)********************
+// Array, Objects, Functions
+
+const heros = ["shaktiman", "naagraj", "doga"];
+let myObj = {
+    name: "hitesh",
+    age: 22,
+}
+const myFunction = function(){
+    console.log("Hello world");
+}
+
+console.log(typeof heros); //object
+console.log(typeof myObj); //object
+console.log(typeof myFunction); //function or object function
+
+/***************Note Point 1 example****************************/
 // x=10 //without use strict it will be a global variable but with use strict it will throw error. this is example of accidental globals.
 // console.log(x);
 

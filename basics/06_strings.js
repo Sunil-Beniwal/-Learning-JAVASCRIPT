@@ -73,21 +73,60 @@ let str = new String("I am learning Javascript")
 // console.log(str.substring(-2,4)); // don't take neg values so treats negative values as index 0.
 
 
-console.log(str.slice(1));
-console.log(str.slice(2,6)); //indexend is not included in extrated string
-console.log(str.slice(6,2)); //if startindex > endIndex, returns empty string
-console.log(str.slice(-10,-2)); //for negative values checks from end of string
+// console.log(str.slice(1));
+// console.log(str.slice(2,6)); //indexend is not included in extrated string
+// console.log(str.slice(6,2)); //if startindex > endIndex, returns empty string
+// console.log(str.slice(-10,-2)); //for negative values checks from end of string
 
 
+/************************Modifying Strings**************************/
+// Strings are immutable means cannot be updated. every modification will generate new string but original one will remain same.
 
-const newString3 = "   Sunil    "
-// console.log(newString3);
-// console.log(newString3.trim());
+const string = new String("I-am-learning-JS.And JS is fun")
 
-// console.log(myName.split('-'));
+// console.log(string.split('-'));//splits the string into parts where - is present and returns the array of substrings.
+// console.log(string.split(''));// returns array of characters of string.
+// console.log(string.replace('JS','Javascript')); //replace only first occurence of JS
+// console.log(string.replaceAll('JS','Javascript')); //replaces all occurences
 
 const url = "https://sunil.com/sunil%20beniwal"
 
 // console.log(url.replace('%20', '-'))
-// console.log(url.includes('sundar'))
+
+
+const newString = "   Sunil    "
+
+// console.log(newString);
+// console.log(newString.trim()); //trims removes whitespace from both ends of this string
+// console.log(newString.trimStart()); //trims whitespace from start
+// console.log(newString.trimEnd()); //trims white space from end
+
+
+const mood = "Happy! ";
+// console.log(mood.repeat(2));
+// console.log(`I feel ${mood.repeat(3)}`); // Expected output: "I feel Happy! Happy! Happy! "
+
+
+/****************************splitting and joining*************************/
+let fruits = "apple,banana,grape";
+let arr = fruits.split(",");
+// console.log(arr); // ["apple", "banana", "grape"]
+
+// console.log(arr.join(" | ")); // "apple | banana | grape"
+
+
+/*********************************Padding*********************************/
+let num = "5";
+// console.log(num.padStart(3, "0")); // "005"
+// console.log(num.padEnd(3, "*"));   // "5**"
+
+
+/*******************iteration on string****************************************/
+let word = "JS";
+for (let char of word) {
+  console.log(char);
+}
+
+
+
 

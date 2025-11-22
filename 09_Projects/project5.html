@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Color Changing Screen</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+
+    <h1>Start should change the Background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button
+  </body>
+  <script>
+    // objective: start button should change the background color every second and stop button should stop changing color at current color.
+
+    //first we have to generate random color using hexcode
+    const randomColor = function(){
+      let hexcode ='#';
+      for (let index = 0; index < 6; index++) {
+        const Random = Math.floor(Math.random()*16)
+        hexcode += Random.toString(16) //.toString(16) converts the number to base 16 (hexadecimal) format.
+      }
+      return hexcode;
+    }
+    //we can use other method also to connvert random number to string like below
+    // const hex = '0123456789ABCDEF'; //define a string containing all possible hexadecimal characters outside loop.
+    // color += hex[Math.floor(Math.random() * 16)]; access hexadecimal character with string ndex inside loop.
+
+    const changeBackgroundColor = function(){
+      const color = randomColor();
+      document.querySelector('body').style.backgroundColor = color;
+    }
+
+    let intervalId;
+    document.getElementById('start').addEventListener('click',()=>{
+      if(!intervalId){
+        intervalId = setInterval(changeBackgroundColor, 1000)
+      }
+    })
+
+    document.getElementById('stop').addEventListener('click', ()=>{
+      clearInterval(intervalId)
+      intervalId = null;
+    })
+      
+  </script>
+</html>

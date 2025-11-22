@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Leaning Dom in JS</title>    
+</head>
+<body>
+    <div >
+        <h1  id="title" class="heading">DOM learning in JS <span style="display: none;">test text</span></h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+        <input type="text">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+            
+        </ul>
+
+    </div>
+    <script>
+            // console.log(window);
+            // console.log(window.document);
+            // console.log(document);
+            // console.dir(document);
+
+
+            // console.log(document);
+            // console.log(document.head);
+            // console.log(document.body);
+            // console.log(document.title);
+            // console.log(document.all); //gives html collection of all the elements. html collection is similar to array but not exactly an array.
+            // console.log(document.all[7]); // to access specific element from html collection
+
+
+            // console.log(document.forms); // html collection of all the forms
+            // console.log(document.links); // html collection of all the links
+            // console.log(document.images); // html collection of all the images
+
+            // // Get element by ID and getAttribute(), setAttribute()+++++++++++++++++++++++++++++++++++++++++++++++++++++
+            //    console.log(document.getElementById("title"));
+            //    console.log(document.getElementById("title").id); //correct way to get id
+            // //    console.log(document.getElementById("title").class); // undefined
+            //    console.log(document.getElementById("title").className); // correct way to get class name
+            //    console.log(document.getElementById("title").getAttribute); // function
+            //    console.log(document.getElementById("title").getAttribute('id')); // correct way to get id using getAttribute
+            //    console.log(document.getElementById("title").getAttribute('class')); // correct way to get class using getAttribute
+            //    console.log(document.getElementById("title").getAttribute('style')); // null if attribute not present
+
+            //    console.log(document.getElementById("title").setAttribute('style', 'color: red;'));// to set attribute
+            //    console.log(document.getElementById("title").getAttribute('style')); // to get
+            //    console.log(document.getElementById("title").setAttribute('class', 'test')); // this will overwrite existing class
+            //    console.log(document.getElementById("title").setAttribute('class', 'heading test')); //this is right way to add another class without removing existing class
+       
+
+            // manipulation of elements++++++++++++++++++++++++++++++++++++++++++++
+            const title = document.getElementById('title'); // getting the element first which we want to change
+            title.style.color = "green";
+            title.style.backgroundColor = "pink";
+            title.style.padding = "15px";
+            
+            //difference between innerText, textContent and innerHTML+++++++++++++++++++++++++++++++++++++
+            // console.log(title.innerText); // only gives the text content which is visible on the page
+            // console.log(title.textContent); // gives all the text content including the hidden text
+            // console.log(title.innerHTML);  // gives text with the html content inside the element
+
+            // title.innerText = "Hi Sunil"; // changing the text. this will remove any html content inside the element
+            // title.textContent = "Hi Sunil"; // changing the text. this will also remove any html content inside the element
+            // title.innerHTML = 'Hi Sunil <span style="display: none;">test text</span>'; // changing the text. this will keep the html content inside the element
+
+
+            //get elements by className++++++++++++++++++++++++++++++++++++++++++++
+            // const listItems = document.getElementsByClassName('list-item')
+            // console.log(listItems);  // html collection of all the elements with class name 'list-item'
+            // console.log(listItems.length); // number of elements in the html collection
+
+            // listItems[0].style.color = "red"; // changing the style of first element
+
+            // const convertedArray = Array.from(listItems); // converting html collection to array for using forEach loop
+            // convertedArray.forEach(function (li){ 
+            //     li.style.color = "green";
+            //     li.style.backgroundColor = "purple"
+            // })
+
+            // Get elements by tag name+++++++++++++++++++++++++++++++++++++++++++++++
+            // let h2Elements = document.getElementsByTagName('h2');
+            // console.log(h2Elements); // html collection of all elements with h2 heading
+            // for(let i=0; i<h2Elements.length; i++){
+            //     h2Elements[i].style.backgroundColor = 'lightgray';
+            // }
+
+
+            //querySelector() and querySelectorAll()++++++++++++++++++++++++++++++++++++
+            // console.log(document.querySelector('ul')) 
+            // console.log(document.querySelector('#title')) 
+            // console.log(document.querySelector('.heading')) 
+            // console.log(document.querySelector('input'))  // prints only first input element not all. 
+            // console.log(document.querySelector('input[type=text]')) 
+
+            // const h2Elements = document.querySelectorAll('h2')
+            // console.log(h2Elements); // prints nodelist containing all h2 headings. nodelist looks similar to arrays but not actually array. but unlike HTMl collection, nodelist provide forEach() method for looping.
+
+            // h2Elements[0].style.backgroundColor = "yellow"; // styles first h2 heading in nodelist.
+            // //to apply styling on all h2 headings we can apply forEach loop on nodelist.
+            // h2Elements.forEach((item)=>{
+            //     item.style.backgroundColor = "black";
+            //     item.style.color = "purple";
+            //     item.style.padding= '15px';
+            // })
+
+            
+
+        
+    </script>
+</body>
+</html>

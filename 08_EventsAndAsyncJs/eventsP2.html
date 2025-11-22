@@ -1,0 +1,38 @@
+<!--***************setTimeOut() and clearTimeOut()************************************************* -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js events</title>
+</head>
+<body>
+    <h1>Set Time Out</h1>
+    <button id="button">Stop</button>
+</body>
+<script>
+    //objective: change h1 text to Hi Sunil after 3 seconds and stop it from changing before 3 seconds if pressed stop button
+
+    // let changeMe = setTimeout(() => {
+    //     let Heading = document.querySelector('h1')
+    //     Heading.innerHTML = `Hi SUNIL`
+    //     console.log("heading Changed");
+        
+    // }, 3000);
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = `HI SUNIL`;
+        console.log("Heading Changed"); 
+    }
+
+    const changeMe = setTimeout(changeText, 3000) //a callback function(which tells what to do after specified time) and time in millisecond.
+
+    const button = document.getElementById('button')
+    button.addEventListener('click', ()=>{
+        clearTimeout(changeMe)
+        console.log("stopped");
+    })
+    
+</script>
+</html>

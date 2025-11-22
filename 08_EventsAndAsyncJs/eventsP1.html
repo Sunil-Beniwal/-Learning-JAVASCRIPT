@@ -1,0 +1,109 @@
+<!-- An event is something that happens in your webpage — a click, a key press, mouse movement, form submission, or even when the page loads. When an event happens, JavaScript can react to it — that’s called event handling. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS events</title>
+</head>
+<body>
+    <h1>Understanding Js events through list of Images</h1>
+    <ul id="images">
+        <li><img src="https://cdn.pixabay.com/photo/2025/09/27/16/16/cranes-9858983_1280.jpg" id="birds" alt="Birds in the sky" width="200px"></li>
+        <li><img src="https://cdn.pixabay.com/photo/2025/08/09/17/47/modelling-9764984_1280.jpg" id="plane" width="200px" alt="Plane"></li>
+        <li><img src="https://cdn.pixabay.com/photo/2025/09/25/19/23/travel-9855574_1280.png" id="airport" width="200px" alt="Airport"></li>
+        <li><img src="https://cdn.pixabay.com/photo/2025/09/19/09/54/flower-9842886_1280.jpg" id="flowers" width="200px" alt="Flowers"></li>
+        <li><a href="https://www.google.com/" id="google">Google</a></li>
+    </ul>
+</body>
+<script>
+    // document.getElementById("birds").onclick = function(){
+    //     console.log("Birds Clickd")
+    //     alert("Birds Clicked")
+    // }
+
+
+    // document.querySelector('#birds').addEventListener('click', function(e){
+    //     alert('birds image Clicked')
+    //     console.log(e);
+    //     console.log(e.target);
+    // })
+
+    //++++++++++++event propagation(The order in which an event travels through the DOM tree.)+++++++++++++++++++++++++++++++++++++++
+    // Note: Event propagation happens in three phases. capturing phase(outer to inner), Target phase, and bubbling phase(inner to outer). when any event start propagation( lets say click event, so after clicking ), it first travels from top(document) to target element. in this phase, listeners with { capture: true } will run. When the event reaches the actual element clicked, any listeners (capture or bubble) on that target will now run. At last Now the event “bubbles” back up from the target to the top. In this phase, listeners with { capture: false } (default) will run.
+
+    // document.querySelector('#images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul"); 
+    //     // e.stopPropagation()
+    // },false) //default is false → bubbling phase (inner → outer)
+
+    // document.getElementById('plane').addEventListener('click', function(e){
+    //     console.log("Plane clicked");  
+    //     // e.stopPropagation(); // Stops the event from bubbling to the outer listener(only Plane clicked will be printed).
+    // },false)
+
+    // here {capture: false} is set on both outer and inner elements so both event listeners will run in bubbling phase. means "plane clicked" will print first and then "clicked inside ul".
+    //  Now if you set them both true, then in that case both event listeners will run in capturing phase that means "clicked inside ul" will print first and then "plane clicked". 
+    // Now if you set false on outer ul and true on inner plane image. then image event listerner wll run in capturing phase and ul event listener will run later in bubbling phase. means "plane clicked" will print first in console.
+    // e.stopPropagation() stops the propagation of event
+    
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault(); //this will stop default behavior of anchor tag means will stop opening link when clicked.
+    //     e.stopPropagation(); 
+    //     console.log("google clicked");
+    // },)
+
+
+    //practical example: remove the picture when clicked.
+    // document.getElementById('images').addEventListener("click", function(e){
+    //     console.log(e.target.id);
+    //     let removeIt = e.target.parentNode // for removing list of image clicked. li is parentNode of img
+    //     removeIt.remove();
+    // }) 
+    //simply doing this will remove image when clicked but if clicked on list then whole ul will be removed bc of parent node. so this is not fully correct. 
+
+    // document.getElementById('images').addEventListener("click", function(e){
+    //     console.log(e.target.tagName);
+    //     if(e.target.tagName ==="IMG"){
+    //         console.log(e.target.id)
+    //         let removeIt = e.target.parentNode // for removing list of image clicked. li is parentNode of img
+    //         removeIt.remove();
+    //         //removeIt.parentNode.removeChild(removeIt)
+    //     }
+    // }) 
+
+
+    // type, timestamp, preventDefault()
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+    /*🧩 Most Important JavaScript Events (Short Notes)
+    
+    click → Runs when an element (like a button) is clicked.
+    
+    input → Fires on every keystroke — for live updates/validation.
+    
+    change → Fires when input loses focus and value changes (final check).
+    
+    submit → When a form is submitted — use preventDefault() to stop reload.
+    
+    keydown → When any key is pressed (detect shortcuts or Enter key).
+    
+    keyup → When key is released (read final input value).
+    
+    DOMContentLoaded → When HTML is fully loaded and parsed (safe to run scripts).
+    
+    load → When page and all resources (images, CSS) are fully loaded.
+    
+    scroll → When user scrolls (used for infinite scroll or sticky nav).
+    
+    resize → When browser window is resized (for responsive layouts).
+    
+    mouseover → When mouse enters an element (hover effect).
+    
+    mouseout → When mouse leaves an element.*/
+</script>
+</html>

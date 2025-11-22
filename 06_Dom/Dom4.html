@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Dom</title>
+</head>
+<body>
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    const myList = document.querySelector('.language')
+    
+    //adding list items
+    function addLanguage(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`
+        myList.appendChild(li)
+    }
+    addLanguage("HTML") 
+
+    //optimised way
+    function addList(lang){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(lang))
+        myList.appendChild(li)
+    }
+    
+    addList("python")
+    addList("c++")
+    addList("Java")
+
+    //edit
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // secondLang.innerHTML = "Golang"
+    const newLi = document.createElement('li')
+    newLi.textContent = "Golang"
+    secondLang.replaceWith(newLi)
+    console.log(secondLang); // old value HTML because it is removed from the DOM but not removed from memory. so the variable still holds the old value. we need to run querySelector again to get the updated value.
+    console.log(document.querySelector('li:nth-child(2)')); //new value Golang because now we are querying the DOM again and in dom the second li is Golang now.
+
+    //edit 2
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = "<li>TypeScript</li>"
+
+    //remove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
+    
+
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!--***************setInterval() and clearInterval()************************************************* -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body>
+    <h1>Asynchronous Javascript</h1>
+    <h2>setInterval and clearInterval</h2>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+</body>
+<script>
+
+    const startPrint = function(str){
+            console.log(str,new Date().toLocaleTimeString())
+        }
+
+    let printMe; //for storing setInterval
+    
+    document.querySelector('.start').addEventListener('click', ()=>{
+        if(!printMe){ // or if (printMe===null)
+        printMe = setInterval(startPrint, 1000, "Sunil") //execute callback function with argument after every time(in millisecond).
+        }
+    })
+    
+    document.querySelector('.stop').addEventListener('click', ()=>{
+        clearInterval(printMe)
+        printMe = null;
+    })
+    
+    
+</script>
+</html>

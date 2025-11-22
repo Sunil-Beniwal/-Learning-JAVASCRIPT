@@ -1,0 +1,145 @@
+<!-- what is Api request? 
+An API request is simply your JavaScript code asking a server for some data.In JS, you can send API requests using:
+-> fetch() (modern way)
+-> XMLHttpRequest() (older way)  We will study this here in brief to be aware of this method also.-->
+
+<!-- XMLHttpRequest (XHR) is the old traditional method to make API calls in JavaScript.
+syntax:
+const xhr = new XMLHttpRequest(); //create request object
+xhr.open("GET", "https://api.example.com/data");   //set request type & URL
+xhr.onload = function () {          //runs when data is received
+  console.log(xhr.responseText);   
+};
+xhr.send();   //actually sends the request
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api request</title>
+</head>
+<body>
+    <h1>Understandong old XMLHttpRequest method of APi Request </h1>
+</body>
+<script>
+    // const xhr = new XMLHttpRequest(); //create request object
+    //     xhr.open("GET", "https://jsonplaceholder.typicode.com/users/1");   //set request type & URL
+    //     xhr.onload = function () {          //runs when data is received
+    //         console.log(xhr.responseText);  //recives data in JSON string
+    //         console.log(typeof xhr.responseText);
+    //         // const data = xhr.responseText;
+    //         // console.log(data.followers)  //undefined bc trying to access data from JSOn string not object
+    //         const data = JSON.parse(xhr.responseText); //convert JSON -> object
+    //         console.log(data.name)  //followers count
+
+    //     };
+    //     xhr.send();   //actually sends the request
+
+
+    // older method +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // const requestUrl = 'https://jsonplaceholder.typicode.com/users/1' //API URL we want to request data from
+    // const xhr = new XMLHttpRequest();
+    // xhr.open('GET', requestUrl)
+    // xhr.onreadystatechange = function(){ // // This function runs every time readyState changes (0 → 4)
+    //     console.log(xhr.readyState); 
+    //     if (xhr.readyState === 4) { // // readyState 4 means: DONE (response fully received)
+    //         const data = JSON.parse(this.responseText)
+    //         console.log(typeof data);
+    //         console.log(data.name);
+    //     }
+    // }
+    // xhr.send();
+    /*Note: xhr.onreadystatechange is a function that gets called automatically whenever xhr.readyState changes.
+    readyState goes through 5 stages:
+    | readyState | Meaning                             |
+    | ---------- | ----------------------------------- |
+    |   0     | UNSENT (request created)            |
+    |   1      | OPENED (open() called)              |
+    |   2      | HEADERS_RECEIVED                    |
+    |   3      | LOADING (downloading data)          |
+    |   4      | DONE (response received completely) |
+
+    modern alternative is xhr.onload, because it runs only when readyState = 4, not multiple times. example we learned first.
+    */
+
+
+    // POST example using XHR +++++++++ post method sends data to the server.+++++++++++++++++++++++++++++++++++++
+        // const url = "https://jsonplaceholder.typicode.com/posts"; // Fake API for testing POST requests
+
+        // const xhr = new XMLHttpRequest();// Create XHR object
+
+        // xhr.open("POST", url); // Prepare a POST request (not sent yet)
+
+        // xhr.setRequestHeader("Content-Type", "application/json"); // Tell server that we are sending JSON data
+
+        // xhr.onload = function () {
+        //     // Runs when the server sends back a full response (readyState = 4)
+        //     console.log("Response:", xhr.responseText);  // Response from server
+        //     const data = JSON.parse(xhr.responseText);   // Convert JSON string → object
+        //     console.log(data);
+        // };
+
+        // const body = {
+        //     title: "Hello Sunil",
+        //     body: "Learning POST with XHR",
+        //     userId: 101
+        // };
+        // // Data you want to send
+
+        // xhr.send(JSON.stringify(body)); // Convert object → JSON string and send it
+
+
+        /*NOte:
+        ✅ GET Method
+        GET is used to fetch data from the server
+        xhr.onload receives the API data you asked for
+        Example: user details, products, posts
+
+        ✅ POST Method
+        POST is used to send data to the server
+        xhr.onload receives the server’s reply to what you sent
+        (could be confirmation, created item, ID, success message, etc.)
+        */
+
+
+</script>
+</html>
+
+
+
+
+<!-- what is Api?
+An API, or Application Programming Interface, is a set of rules that allows different software programs to communicate with each other and share data or functionality. They enable different applications, platforms, or systems to communicate and exchange data seamlessly.
+
+
+API TYPES:
+
+1) Web API:
+   - APIs available over the internet. Used in web development — the APIs you call using fetch(), XHR, etc.
+   - Used to fetch data like users, weather, products. examples github Api, youtube Api, weather Api 
+   - Usually returns JSON.
+
+2) REST API:
+   - Most common style of Web API. Uses endpoints like /users or /posts/1.
+   - Uses HTTP methods: GET, POST, PUT, DELETE.  Easy to use and widely supported.
+   -returns JSON
+
+3) SOAP API:
+   - Older, enterprise-style API.
+   - Uses XML instead of JSON.
+   - Very strict structure; used in banks and large organizations.
+
+4) GraphQL API:
+   - Modern alternative to REST.
+   - Only one endpoint.
+   - Client asks exactly what data it needs. Avoids over-fetching and under-fetching.
+
+5) Browser API:
+   - Built into the browser (no server needed).
+   - Examples: DOM API, Fetch API, LocalStorage, Geolocation.
+   - Provides features directly to JavaScript in the browser.
+
+6) Library/Framework API:
+   - Functions/methods provided by tools like React, Node.js, jQuery.
+   - Helps build apps faster using predefined utilities. -->
